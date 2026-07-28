@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    volumes:
+      # persist the JSON "database"
+      - ./app/src/data:/app/app/src/data
+    restart: unless-stopped
