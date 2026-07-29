@@ -13,13 +13,13 @@ export default async function add(req: Request) {
 
     //read the body
     const { title } = await req.json() as TASK;
-    const taskId = crypto.randomUUID();
+    const id = crypto.randomUUID();
 
     const path = "./app/src/data/tasks.json";
     const file = Bun.file(path);
     const fileContent = await file.json();
 
-    fileContent.tasks.push({ taskId, title, userId });
+    fileContent.tasks.push({ id, title, userId });
 
 
 

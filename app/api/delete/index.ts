@@ -22,13 +22,16 @@ export default async function deleteTask(req: Request) {
     const fileContent = await file.json();
 
     const tasks = fileContent.tasks
-    const delTask = tasks.filter((task: TASK) => (task.id == id));
+    const delTask = tasks.find((task: TASK) => task.id == id);
+    if (!delTask) {
+        return Response.json({ message: "Task not found" }, { status: 404 });
+    }
     if (delTask.userId != userId) {
         return Response.json({ message: "You are not allowed to delete this task. It belongs to someone else" }, { status: 403 });
     }
 
 
-    const updatedTasks = tasks.filter((task: TASK) => !(task.id == id && task.userId == userId));
+    const updatedTasks = tasks.filter((task: TASK) => task.id != id);
 
     fileContent.tasks = updatedTasks;
 

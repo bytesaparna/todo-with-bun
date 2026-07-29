@@ -1,6 +1,6 @@
 const startedAt = Date.now();
 
-export default function health(req: Request): Response {
+export default async function health(req: Request){
     const body = {
         status: "ok",
         uptime: (Date.now() - startedAt) / 1000,
