@@ -9,6 +9,8 @@ import health from './app/api/health';
 import add from "./app/api/add";
 import { logger } from "./app/src/logger";
 import updateTask from "./app/api/update";
+import { openApiDoc } from "./app/api/doc";
+import { swaggerUI } from "@hono/swagger-ui";
 
 
 const app = new Hono;
@@ -51,6 +53,10 @@ app.use("*", cors({
     allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
 }));
+
+app.get('/doc', (c) => c.json(openApiDoc))
+// Use the middleware to serve Swagger UI at /ui
+app.get('/ui', swaggerUI({ url: '/doc' }))
 
 app.get("/", (c) => c.text("Welcome to TODO app"));
 app.get("/api/health", (c) => health(c.req.raw));

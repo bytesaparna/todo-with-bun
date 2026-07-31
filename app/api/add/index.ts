@@ -1,6 +1,6 @@
 import type { errors } from "jose";
-import type { TASK } from "../../src/types";
 import { checkAuth } from "../../src/function";
+import type { TASK } from "../../src/types";
 
 export default async function add(req: Request) {
     const auth = await checkAuth(req);
@@ -12,7 +12,7 @@ export default async function add(req: Request) {
     const userId = auth.payload.id;
 
     //read the body
-    const { title } = await req.json() as TASK;
+    const { title } = await req.json() as TASK ;
     const id = crypto.randomUUID();
 
     const path = "./app/src/data/tasks.json";

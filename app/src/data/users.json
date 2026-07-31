@@ -7,7 +7,7 @@
     },
     {
       "id": "cecb974d-1cc3-4324-aee0-7e4c5550a004",
-      "email": "user2",
+      "email": "user2@gmail.com",
       "password": "user2pass"
     },
     {
@@ -74,6 +74,16 @@
       "id": "6d9e24ae-0afe-40da-9ce3-c938adfbebe6",
       "email": "Jeffery Batz",
       "password": "frbQiyja2wnLu59"
+    },
+    {
+      "id": "81224826-1d60-4d3d-81b6-eef47150fa6b",
+      "email": "Rachael Beatty",
+      "password": "LsuiakPU436Kl7A"
+    },
+    {
+      "id": "7fcabd2c-ac95-4027-8bda-a977358de52c",
+      "email": "swaggeruser2@example.com",
+      "password": "swagger2pass"
     }
   ]
 }

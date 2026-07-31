@@ -40,6 +40,6 @@ export default async function deleteTask(req: Request) {
     //write it to the json file
     await Bun.write(path, JSON.stringify(fileContent, null, 2));
 
-    return Response.json({ message: "Task deleted successfully" }, { status: 200, });
+    return Response.json({ message: "Task deleted successfully" }, { status: 204, });
 
 }
