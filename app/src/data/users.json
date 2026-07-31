@@ -84,6 +84,11 @@
       "id": "7fcabd2c-ac95-4027-8bda-a977358de52c",
       "email": "swaggeruser2@example.com",
       "password": "swagger2pass"
+    },
+    {
+      "id": "1bc869ec-55a2-4999-8eb4-7b698540f5e9",
+      "email": "andrew@test.com",
+      "password": "$2b$04$FMh4ydk6Vbf/pUS.C9WVPOy7o7i99ojYIjVMghJYGrwCHXSXQ3uAq"
     }
   ]
 }

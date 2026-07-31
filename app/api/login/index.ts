@@ -1,5 +1,7 @@
-import { getAccessToken } from "../../src/function";
+import { boolean } from "zod";
+import { getAccessToken, verifyPassWord } from "../../src/function";
 import type { USER } from "../../src/types";
+import { is } from "zod/locales";
 
 export default async function loginUser(req: Request) {
     const { email, password } = await req.json() as USER;
@@ -14,7 +16,10 @@ export default async function loginUser(req: Request) {
         return Response.json({ message: "Username not found" }, { status: 401 });
     }
 
-    if (user.password != password) {
+
+    const isMatch = await verifyPassWord(password, user.password);
+
+    if (!isMatch) {
         return Response.json({ message: "Password Incorrect" }, { status: 401 });
     }
 

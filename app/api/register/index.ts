@@ -1,3 +1,4 @@
+import { hashPassword } from "../../src/function";
 import type { USER } from "../../src/types";
 
 export default async function registerUser(req: Request) {
@@ -15,7 +16,8 @@ export default async function registerUser(req: Request) {
 
     const fileContent = await file.json();
     const id = crypto.randomUUID();
-    fileContent.users.push({ id, email, password });
+    const hashedPassword = await hashPassword(password);
+    fileContent.users.push({ id, email,password: hashedPassword });
 
     Bun.write(path, JSON.stringify(fileContent, null, 2));
 

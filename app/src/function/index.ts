@@ -42,3 +42,17 @@ export async function checkAuth(req: Request): Promise<{ payload: JWTPayload } |
     }
 }
 
+
+export async function hashPassword(password: string) {
+    const hashedPassword = await Bun.password.hash(password, {
+        algorithm: "bcrypt",
+        cost: 4, //
+    })
+
+    return hashedPassword;
+}
+
+export async function verifyPassWord(typedPass: string, hashedPass: string,) {
+    const isMatch = await Bun.password.verify(typedPass, hashedPass);
+    return isMatch;
+}
